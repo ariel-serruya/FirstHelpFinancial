@@ -1,0 +1,52 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Red Sox @ Giants",
+      "description": "",
+      "location": "Oracle Park, San Francisco, CA",
+      "date": "July 28, 2023 7:15 PM",
+      "price": 65
+    },
+    {
+      "id": 2,
+      "title": "Red Sox @ Mariners",
+      "description": "",
+      "location": "T-Mobile Park, Seattle, WA",
+      "date": "July 30, 2023 1:05 PM",
+      "price": 85
+    },
+    {
+      "id": 3,
+      "title": "Blue Jays @ Red Sox",
+      "description": "",
+      "location": "Fenway Park, Boston, MA",
+      "date": "August 4, 2023 7:10 PM",
+      "price": 85
+    },
+    {
+      "id": 4,
+      "title": "Royals @ Red Sox",
+      "description": "",
+      "location": "Fenway Park, Boston, MA",
+      "date": "August 7, 2023 7:10 PM",
+      "price": 50
+    },
+    {
+      "id": 5,
+      "title": "Red Sox @ Nationals",
+      "description": "",
+      "location": "Nationals Park, Washington, DC",
+      "date": "August 7, 2023 7:05 PM",
+      "price": 40
+    },
+    {
+      "id": 6,
+      "title": "Red Sox @ Yankees",
+      "description": "",
+      "location": "Yankee Stadium, Bronx, NY",
+      "date": "August 18, 2023 7:05 PM",
+      "price": 100
+    }
+  ]
+}
