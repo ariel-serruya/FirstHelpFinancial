@@ -11,9 +11,20 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import { useQuery } from "react-query";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const { isLoading, error, data } = useQuery("eventData", () =>
+    fetch("http://localhost:3000/events").then((res) =>
+      console.log("Events:", res.json())
+    )
+  );
+
+  if (isLoading) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <Flex
@@ -149,7 +160,7 @@ function App() {
           Tickets
         </Heading>
         <Flex
-          fflexDir={"row"}
+          flexDir={"row"}
           justify={"space-between"}
           style={{ width: "100%" }}
         >
