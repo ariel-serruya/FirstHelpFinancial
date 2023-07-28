@@ -50,23 +50,20 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     let price = getTotal();
-    console.log("SEdaeqwrq", price);
     setTotal(price);
   }, [values]);
 
   const getTotal = () => {
     let price = 0;
     for (const [key, value] of Object.entries(values)) {
-      console.log(`${key}: ${value}`);
       data.forEach((event) => {
-        console.log(key, event.id, event.price);
         if (key == event.id) {
-          price += event.price;
-          price *= value;
+          let temp = event.price * value;
+          price += temp;
         }
       });
-      return price;
     }
+    return price;
   };
   const dispatch = useDispatch();
 
