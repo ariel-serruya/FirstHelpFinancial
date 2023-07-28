@@ -1,8 +1,20 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###Get started:
 
-Currently, two official plugins are available:
+`npm install`
+`npm run dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###Technologies used:
+
+Vite: This is a create-react-app alternative. Much faster load times.
+
+JSON-Server: This is a great package that allows you to mock an API.
+
+Concurrently: This allows me to run the vite server and json server at the same time.
+
+Chakra-UI: Get component library with decent built-in styles.
+
+React-Query: This is a great JS library that caches API responses. Because the state is cached per unique keys, it serves as a great alternative to redux for API responses.
+
+Redux-Toolkit: A lightweight version of redux with less code bloat/overhead.
