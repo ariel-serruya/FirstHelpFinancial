@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import {
   Flex,
@@ -14,8 +14,8 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import { useQuery } from "react-query";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setCard,
   removeCard,
+  updateField,
 } from "./redux/features/creditcard/creditcardSlice";
 
 function App() {
@@ -32,20 +32,19 @@ function App() {
     postalCode,
     phone,
   } = useSelector((state) => state.creditcard);
-
-  const [newName, setNewName] = useState(name);
-  const [newCardNumber, setNewCardNumber] = useState(cardNumber);
-  const [newExpirationDate, setNewExpirationDate] = useState(expirationDate);
-  const [newSecurityCode, setNewSecurityCode] = useState(securityCode);
-  const [newCountry, setNewCountry] = useState(country);
-  const [newAddress1, setNewAddress1] = useState(address1);
-  const [newAddres2, setNewAddress2] = useState(address2);
-  const [newCity, setNewCity] = useState(city);
-  const [newState, setNewState] = useState(state);
-  const [newPostalCode, setNewPostalCode] = useState(postalCode);
-  const [newPhone, setNewPhone] = useState(phone);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("dajsdlja", name);
+  }, [name]);
+
+  const handleCancel = () => {
+    dispatch(removeCard());
+  };
+
+  const handleChange = (field) => (evt) => {
+    dispatch(updateField({ field, value: evt.target.value }));
+  };
 
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch("http://localhost:3000/events").then((res) =>
@@ -101,77 +100,69 @@ function App() {
           </Heading>
           <FormControl>
             <FormLabel>Name on Card</FormLabel>
-            <Input
-              type="text"
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-            />
+            <Input type="text" value={name} onChange={handleChange("name")} />
           </FormControl>
           <FormControl>
             <FormLabel>Card Number</FormLabel>
             <Input
-              type="number"
-              value={newCardNumber}
-              onChange={(e) => setNewCardNumber(e.target.value)}
+              type="text"
+              value={cardNumber}
+              onChange={handleChange("cardNumber")}
             />
           </FormControl>
           <Flex flexDir={"row"} width={"100%"} gap={3}>
             <FormControl>
               <FormLabel>Expiration Date</FormLabel>
               <Input
-                type="number"
-                value={newExpirationDate}
-                onChange={(e) => setNewExpirationDate(e.target.value)}
+                type="text"
+                value={expirationDate}
+                onChange={handleChange("expirationDate")}
               />
             </FormControl>
             <FormControl>
               <FormLabel>Security Code</FormLabel>
               <Input
-                type="number"
-                value={newSecurityCode}
-                onChange={(e) => setNewSecurityCode(e.target.value)}
+                type="text"
+                value={securityCode}
+                onChange={handleChange("securityCode")}
               />
             </FormControl>
           </Flex>
           <FormControl>
             <FormLabel>Country</FormLabel>
             <Input
-              type="number"
-              value={newCountry}
-              onChange={(e) => setNewCountry(e.target.value)}
+              type="text"
+              value={country}
+              onChange={handleChange("country")}
             />
           </FormControl>
           <FormControl>
             <FormLabel>Address Line 1</FormLabel>
             <Input
               type="text"
-              value={newAddress1}
-              onChange={(e) => setNewAddress1(e.target.value)}
+              value={address1}
+              onChange={handleChange("address1")}
             />
           </FormControl>
           <FormControl>
             <FormLabel>Address Line 2</FormLabel>
             <Input
               type="text"
-              value={newAddres2}
-              onChange={(e) => setNewAddress2(e.target.value)}
+              value={address2}
+              onChange={handleChange("address2")}
             />
           </FormControl>
           <Flex flexDir={"row"} width={"100%"} gap={3}>
             <FormControl>
               <FormLabel>City</FormLabel>
-              <Input
-                type="text"
-                value={newCity}
-                onChange={(e) => setNewCity(e.target.value)}
-              />
+              <Input type="text" value={city} onChange={handleChange("city")} />
             </FormControl>
             <FormControl>
               <FormLabel>State</FormLabel>
               <Input
                 type="text"
-                value={newState}
-                onChange={(e) => setNewState(e.target.value)}
+                value={state}
+                onChange={handleChange("state")}
               />
             </FormControl>
           </Flex>
@@ -179,17 +170,17 @@ function App() {
             <FormControl>
               <FormLabel>Postal Code</FormLabel>
               <Input
-                type="number"
-                value={newPostalCode}
-                onChange={(e) => setNewPostalCode(e.target.value)}
+                type="text"
+                value={postalCode}
+                onChange={handleChange("postalCode")}
               />
             </FormControl>
             <FormControl>
               <FormLabel>Phone Number</FormLabel>
               <Input
-                type="tel"
-                value={newPhone}
-                onChange={(e) => setNewPhone(e.target.value)}
+                type="text"
+                value={phone}
+                onChange={handleChange("phone")}
               />
             </FormControl>
           </Flex>
@@ -202,33 +193,10 @@ function App() {
             justifyContent={"flex-end"}
             gap={3}
           >
-            <Button
-              variant="ghost"
-              color={"#276dd7"}
-              onClick={() => dispatch(removeCard())}
-            >
+            <Button variant="ghost" color={"#276dd7"} onClick={handleCancel}>
               Cancel
             </Button>
-            <Button
-              style={{ backgroundColor: "#276dd7", color: "white" }}
-              onClick={() =>
-                dispatch(
-                  setCard(
-                    newName,
-                    newCardNumber,
-                    newExpirationDate,
-                    newSecurityCode,
-                    newCountry,
-                    newAddress1,
-                    newAddres2,
-                    newCity,
-                    newState,
-                    newPostalCode,
-                    newPhone
-                  )
-                )
-              }
-            >
+            <Button style={{ backgroundColor: "#276dd7", color: "white" }}>
               Save New Card
             </Button>
           </Flex>
