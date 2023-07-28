@@ -1,11 +1,11 @@
 # React + Vite
 
-###Get started:
+### Get started:
 
-`npm install`
-`npm run dev`
+1. `npm install`
+2. `npm run dev`
 
-###Technologies used:
+### Technologies used:
 
 Vite: This is a create-react-app alternative. Much faster load times.
 
