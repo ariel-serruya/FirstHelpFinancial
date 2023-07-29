@@ -72,6 +72,14 @@ const EventsPage = () => {
             </Heading>
             <Text>{event.location} </Text>
           </Flex>
+          <Flex flexDir={"column"} flex={1} alignItems={"center"}>
+            <Heading as="h2" size="sm">
+              Price (each)
+            </Heading>
+            <Heading as="h2" size="md">
+              ${event.price}.00
+            </Heading>
+          </Flex>
           <NumberInput
             flex={2}
             size="sm"
